@@ -1,0 +1,77 @@
+﻿@model VaccinationRecord.Models.Patient
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Удаление пациента</h2>
+
+<h3>Вы действительно хотите удалить пациента и все записи о его привиках?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Lastname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lastname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Firstname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firstname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Patronymic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patronymic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Birthday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Birthday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SNILS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SNILS)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <div class="col-md-offset-1 col-md-11">
+                    <input type="submit" value="Удалить" class="btn btn-default" />
+                </div>
+
+            </div>
+    }   
+</div>
+
+<div>
+    @Html.ActionLink("Вернуться к списку пациентов", "Index")
+</div>

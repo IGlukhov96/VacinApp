@@ -1,0 +1,102 @@
+﻿@model VaccinationRecord.Models.Patient
+@using VaccinationRecord.Models
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Информация</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Lastname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lastname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Firstname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Firstname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Patronymic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patronymic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Birthday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Birthday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SNILS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SNILS)
+        </dd>
+
+    </dl>
+</div>
+<h3>Прививки</h3>
+@Html.ActionLink("Добавить прививку", "Create", "Vaccination")
+<table class="table">
+    <tr>
+        <th>
+            Препарат
+        </th>
+        <th>
+            Подано согласие
+        </th>
+        <th>
+            Дата прививки
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (Vaccination item in ViewBag.Vacctinations)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Drug.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Agreement)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", "Vaccination", new { id = item.Id }, null) |
+                @*@Html.ActionLink("Details", "Details", "Vaccination", new { id = item.Id }, null) |*@
+                @Html.ActionLink("Удалить", "Delete", "Vaccination", new { id = item.Id }, null)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Вернуться к списку пациентов", "Index")
+</p>

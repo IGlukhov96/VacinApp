@@ -1,0 +1,52 @@
+﻿@model IEnumerable<VaccinationRecord.Models.Vaccination>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Прививки</h2>
+
+<p>
+    @Html.ActionLink("Добавить прививку", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DrugId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PatientId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Agreement)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Drug.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Patient.Lastname)
+            @Html.DisplayFor(modelItem => item.Patient.Firstname)
+            @Html.DisplayFor(modelItem => item.Patient.Patronymic)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Agreement)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

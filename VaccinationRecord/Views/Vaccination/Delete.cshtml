@@ -1,0 +1,64 @@
+﻿@model VaccinationRecord.Models.Vaccination
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Удаление прививки</h2>
+
+<h3>Вы действительно хотитеть удалить данную запись?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DrugId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Drug.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PatientId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patient.Lastname)
+            @Html.DisplayFor(model => model.Patient.Firstname)
+            @Html.DisplayFor(model => model.Patient.Patronymic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Agreement)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Agreement)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+            <div class="col-md-offset-1 col-md-11">
+                <input type="submit" value="Удалить" class="btn btn-default" />
+            </div>
+
+        </div>
+        }
+    </div>
+
+<div>
+    @Html.ActionLink("Вернуться к списку пациентов", "Index")
+</div>
